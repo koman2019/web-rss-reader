@@ -1,0 +1,170 @@
+/* css */
+
+html,body{
+	margin: 0;
+	padding: 0;
+	font: 12px "LiHei Pro", "微軟正黑體", sans-serif;
+	overflow-x: hidden;
+	background-color:#fff
+}
+
+img{
+	border: 0;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+a:hover {
+  text-decoration: none !important;
+}
+a:active{
+	color: #000;
+}
+
+*:focus{
+	outline: none;
+}
+ul{
+	list-style: none;
+	padding: 0;
+}
+
+h1{
+	font: 35px "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	color: #000;
+	margin: 55px auto 25px auto !important;
+	height: 35px;
+}
+
+h2{
+	font: 25px "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	color: #000;
+	margin: 55px auto 25px auto !important;
+	height: 35px;
+}
+
+h2 span{
+	padding: 6px 110px 6px 10px;
+	background: #ED5A97;
+}
+
+h3{
+	font-size: 20px;
+	font-weight: normal;
+	color: #ED5A97;
+	margin: 0 0 30px 0;
+	line-height: 26px;
+	letter-spacing: 1px;
+}
+
+h4{
+	font-size: 18px;
+	font-weight: normal;
+	color: #ED5A97;
+	margin: 0 0 15px 0;
+	line-height: 22px;
+	letter-spacing: 1px;
+}
+
+h5{
+	font: 16px "Comic Sans MS", cursive, sans-serif;
+	font-weight: normal;
+	color: #CCC;
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+
+h6{
+	font: 14px "Comic Sans MS", cursive, sans-serif;
+	font-weight: normal;
+}
+
+.p{
+	font: 12px "LiHei Pro", "微軟正黑體", sans-serif;
+	letter-spacing: 1px;
+	line-height: 18px;
+	color: #808080;
+	margin: 0 0 10px 0;
+}
+
+.em{
+	font: 12px "Comic Sans MS", cursive, sans-serif;
+	font-style: italic;
+	color: #000;
+}
+
+
+/*scroll bar make up*/
+body::-webkit-scrollbar{
+	width:18px
+}
+body::-webkit-scrollbar-track{
+	background-color:#fafafa
+}
+body::-webkit-scrollbar-thumb{
+	background-color:#FFFFFF;
+	border-radius:2px
+}
+
+
+
+/* Modal CSS */
+.modal-open {
+	max-height: calc(100vh - 130px);
+	overflow-y: auto;
+}
+.glyphicon-search, .glyphicon-map-marker{
+	cursor: pointer;
+}
+
+
+/* Menu Css */
+.menu
+{
+	width:100%;
+	height: auto;
+	padding: 0 10px;
+	position: fixed;
+	margin: 0px;
+	z-index: 1;
+	opacity: 0.8;
+	font-weight: bold;
+}
+
+li.list-group-item.list-group-item-info.active > a{
+	color: #fff !important;
+	font: 18px "LiHei Pro", "微軟正黑體", sans-serif !important;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+li.list-group-item.list-group-item-info.active{
+	color: #fff !important;
+	background-color: #7f7f7f !important;
+	opacity: 0.8;
+}
+
+li.list-group-item.list-group-item-info{
+	color: #fff !important;
+	background-color: #7f7f7f !important;
+}
+
+li.list-group-item.list-group-item-info > a{
+	color: #fff !important;
+	font: 14px "LiHei Pro", "微軟正黑體", sans-serif !important;
+}
+
+.progress-bar {
+	opacity: 0.5 !important;
+}
+
+ul.list-group li {
+	border: 1px solid #7f7f7f; !important;
+}
