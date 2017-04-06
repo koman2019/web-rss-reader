@@ -1,0 +1,22 @@
+<div class="widget-box" ng-controller="sourcesController">
+	<div class="widget-header header-color-blue">
+		<div class="row">
+			<div class="col-sm-12">
+				<h4 class="bigger lighter">
+					<i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;
+					Your Cart
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="widget-body">
+		<div class="cart">
+			<label class="checkbox" ng-repeat="sourceFromCart in sourcesFromCart">
+				<span>{{sourceFromCart.sourcename}}</span>
+				<a ng-click="unsubscrible(sourceFromCart.sourcename)" class="pull-right">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</label>
+		</div>
+	</div>
+</div>

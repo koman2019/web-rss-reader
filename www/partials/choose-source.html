@@ -1,46 +1,77 @@
-<div class="widget-box" id="recent-box" ng-controller="sourcesController">
-<div class="widget-header header-color-blue">
-<div class="row">
-<div class="col-sm-6">
-<h4 class="bigger lighter">
-	<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
-	Reading Sources
-</h4>
-</div>
-<div class="col-sm-6">
-<button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin pull-right"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Add New Source</button>
+<div class="row" ng-controller="sourcesController">
+<div class="col-sm-8">
+	<div class="widget-box" id="recent-box">
+	<div class="widget-header header-color-blue">
+	<div class="row">
+	<div class="col-sm-6">
+	<h4 class="bigger lighter">
+		<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
+		Reading Sources
+	</h4>
+	</div>
+	<div class="col-sm-6">
+	<button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin pull-right"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Add New Source</button>
+	</div>
+
+	</div></div>
+	<div class="widget-body">
+		<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+			<div class="form-actions">
+				<div class="input-group">
+					<input type="text" class="form-control" name="source-url" ng-model="sourceURLInput" placeholder="Add New Source By URL" ng-focus="addNewClicked">
+					<div class="input-group-btn">
+					<button class="btn btn-default" type="submit" ng-click="addSource(sourceURLInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Source</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="sources">
+			<label class="checkbox" ng-repeat="source in sources">
+
+				<a ng-click="subscrible(source.sourcename)" class="pull-left" style="margin-right: 10px;">
+					<i class="glyphicon glyphicon-plus"></i>
+				</a>
+				<span>{{source.sourcename}}</span>
+
+				<a ng-click="previewSource(source.url)" class="pull-right" style="margin-left: 5px;">
+					<i class="glyphicon glyphicon-eye-open"></i>
+				</a>
+			</label>
+			
+
+			<div ng-show="isPreviewShow" class="panel panel-default" ng-bind-html="renderHtml(body)"></div>
+
+			
+		</div>
+
+	</div>
+	</div>
 </div>
 
-</div></div>
-<div class="widget-body">
-<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
-	<div class="form-actions">
-		<div class="input-group">
-			<input type="text" class="form-control" name="source-url" ng-model="sourceURLInput" placeholder="Add New Source By URL" ng-focus="addNewClicked">
-			<div class="input-group-btn">
-			<button class="btn btn-default" type="submit" ng-click="addSource(sourceURLInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Source</button>
+<div class="col-sm-4">
+<div class="widget-box">
+	<div class="widget-header header-color-blue">
+		<div class="row">
+			<div class="col-sm-12">
+				<h4 class="bigger lighter">
+					<i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;
+					Your Cart
+				</h4>
 			</div>
 		</div>
 	</div>
-</form>
-<div class="task">
-	<label class="checkbox" ng-repeat="task in tasks">
-		<input 
-		type="checkbox"
-		ng-click="toggleStatus(task.ID,task.STATUS, task.TASK)"/> 
-		<span>{{task.sourcename}}</span>
-		<a ng-click="deleteTask(task.sourcename)" class="pull-right" style="margin-left: 5px;">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-		<a ng-click="previewSource(task.url)" class="pull-right" style="margin-left: 5px;">
-			<i class="glyphicon glyphicon-eye-open"></i>
-		</a>
-    </label>
-	
-
-    <div ng-show="isPreviewShow" class="panel panel-default" ng-bind-html="renderHtml(body)"></div>
-
-	
+	<div class="widget-body">
+		<div class="cart">
+			<label class="checkbox" ng-repeat="sourceFromCart in sourcesFromCart">
+				<span>{{sourceFromCart.sourcename}}</span>
+				<a ng-click="unsubscrible(sourceFromCart.sourcename)" class="pull-right">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</label>
+		</div>
+	</div>
 </div>
+
+
 </div>
 </div>

@@ -2,24 +2,29 @@
 var app = angular.module('myApp', []);
 
 app.controller('sourcesController', function($scope, $http, $sce) {
-	getSource(); // Load all available tasks 
+	
+	getSource(); // Load all available tasks
+	getSourceFromCart();
+	
 	function getSource(){  
-		$http.post("ajax/getSource.php").success(function(data){
-			$scope.tasks = data;
-			console.log($scope.tasks)
+		$http.post("ajax/getSource.php?uid=" + 1).success(function(data){
+			$scope.sources = data;
+			console.log($scope.sources)
 			//console.log($scope.tasks[0].url)
 		});
-		//url = 'http://news.google.com/news?ned=us&topic=h&output=rss';
 
-	    //$http.get("ajax/getSourceContent.php?q=Google").success(function(data){
-        //    $scope.body = data;
-        //    console.log(data);
-		//}); 
-		
-
-
-        //$scope.body = '<div style="width:200px; height:200px; border:1px solid blue;"></div>'; 
 	};
+	
+	function getSourceFromCart(){  
+		$http.post("ajax/getSourceFromCart.php?uid="+ 1).success(function(data){
+			$scope.sourcesFromCart = data;
+			console.log($scope.sourcesFromCart)
+			//console.log($scope.tasks[0].url)
+		});
+
+
+	};
+	
 	$scope.renderHtml = function (htmlCode) {
 		return $sce.trustAsHtml(htmlCode);
 	};
@@ -46,13 +51,29 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 
 	};
 
-	$scope.toggleStatus = function(item, status, task) {
-	//if(status=='2'){status='0';}else{status='2';}
-	//  $http.post("ajax/updateTask.php?taskID="+item+"&status="+status).success(function(data){
-	//    getTask();
-	//  });
+	$scope.subscrible = function(sourcename) {
+	   $http.post("ajax/subscribeSource.php?uid="+1+"&sourcename="+sourcename).success(function(data){
+	     getSource();
+			$http.post("ajax/getSourceFromCart.php?uid="+ 1).success(function(data){
+			$scope.sourcesFromCart = data;
+			console.log($scope.sourcesFromCart)
+			//console.log($scope.tasks[0].url)
+			});
+			
+	   });
+	   
+	};
+	
+	$scope.unsubscrible = function (sourcename) {
+		if(confirm("Are you sure to delete this line?")){
+			$http.post("ajax/unsubscribeSource.php?uid="+ 1 +"&sourcename="+sourcename).success(function(data){
+				getSourceFromCart();
+				getSource();
+			});
+		}
 	};
 
 });
+
 
 
