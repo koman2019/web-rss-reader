@@ -20,7 +20,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" name="source-url" ng-model="sourceURLInput" placeholder="Add New Source By URL" ng-focus="addNewClicked">
 					<div class="input-group-btn">
-					<button class="btn btn-default" type="submit" ng-click="addSource(sourceURLInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Source</button>
+					<button class="btn btn-default" type="submit" ng-click="addSource(sourceURLInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add</button>
 					</div>
 				</div>
 			</div>
@@ -54,13 +54,14 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h4 class="bigger lighter">
-					<i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;
-					Your Cart
+					<i class="glyphicon glyphicon-book"></i>&nbsp;
+					Your Library
 				</h4>
 			</div>
 		</div>
 	</div>
-	<div class="widget-body">
+	<div ng-style="{ 'background-image':sourcesFromCart.length? '' : 'url(../www/img/emptysource.jpg)' }" style="background-position: center; background-size: 250px 230px;
+    background-repeat: no-repeat;min-height: 280px;" class="widget-body">
 		<div class="cart">
 			<label class="checkbox" ng-repeat="sourceFromCart in sourcesFromCart">
 				<span>{{sourceFromCart.sourcename}}</span>
