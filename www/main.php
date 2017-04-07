@@ -1,20 +1,6 @@
 <?php
-   include('config.php');
-   session_start();
-   
-   $user_check = $_SESSION['login_user'];
-   
-   $ses_sql = mysqli_query($db,"select username from admin where username = '$user_check' ");
-   
-   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
-   
-   $login_session = $row['username'];
-   
-   if(!isset($_SESSION['login_user'])){
-      header("location:login.php");
-   }
+   include('session.php');
 ?>
-
 
 <html ng-app="myApp">
     <head>
@@ -24,17 +10,17 @@
 
     </head>
     <body>
-    
+    <!-- diable input -->
     <div class="navbar navbar-default" id="navbar">
     <div class="container" id="navbar-container">
 	<div class="navbar-header">
 		<a href="#" class="navbar-brand">
 			<small>
 				<i class="glyphicon glyphicon glyphicon-log-out"></i>
-				Learn-Around 
+				Learn-Around
 			</small>
 		</a><!-- /.brand -->
-		
+		<input type="text" ng-model="userid" ng-init="userid=<?php echo $login_userid ;?>" ng-show="false">	
 	</div><!-- /.navbar-header -->
 	<div class="navbar-header pull-right" role="navigation">
         <a href="" ng-click="learning = false; choosePage = true;" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;Source</a>
@@ -45,7 +31,7 @@
 	</div>
 	
 	<!-- render choose source page -->
-	<div ng-init="choosePage = true; " ng-if="choosePage" class="row">
+	<div ng-show="choosePage" class="row">
     	<div class="container">
     		<blockquote><h1>Choose your Reading material</h1></blockquote>
     		<div class="col-sm-12">
@@ -55,7 +41,7 @@
     </div>
 	
 	<!-- render learning main page -->
-	<div ng-init="learning = true; " ng-if="learning" class="row">
+	<div ng-init="learning = true; " ng-show="learning" class="row">
     	<div class="container">
     		<blockquote><h1>Learning by ...</h1></blockquote>
     		<div class="col-sm-12">

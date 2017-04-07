@@ -5,7 +5,7 @@ if(isset($_GET['status'])){
 $status = $_GET['status'];
 }
 $userID = $_GET['uid'];
-$query="select distinct sources.sourcename, sources.url from sources where sources.sourcename not in (select sourcename from users_have_sources where userid=1) order by sourcename ";
+$query="select distinct sources.sourcename, sources.url from sources where sources.sourcename not in (select sourcename from users_have_sources where userid='$userID') order by sourcename ";
 #$query="select sourcename, url from sources, users_have_sources where userid='$userID' order by sourcename";
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
