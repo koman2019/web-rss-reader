@@ -25,7 +25,6 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 			//console.log($scope.tasks[0].url)
 		});
 
-
 	};
 	
 	$scope.renderHtml = function (htmlCode) {
@@ -79,4 +78,33 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 });
 
 
+// Reading Controller
+app.controller('readingController', function($scope, $http, $sce) {
+	getSourceFromCart();
+	console.log("HELLO, it is reading controller")
+	function getSourceFromCart(){  
+		$http.post("ajax/getSourceFromCart.php?uid="+ $scope.userid).success(function(data){
+			$scope.sourcesFromCart = data;
+			console.log($scope.sourcesFromCart)
+			//console.log($scope.tasks[0].url)
+		});
+
+	};
+
+});
+
+// Writing Controller
+app.controller('writingController', function($scope, $http, $sce) {
+
+	console.log("HELLO, it is writing controller");
+
+
+});
+
+// Playing Controller
+app.controller('playingController', function($scope, $http, $sce) {
+	
+	console.log("HELLO, it is playing controller")
+
+});
 

@@ -10,7 +10,7 @@
 
     </head>
     <body>
-    <!-- diable input -->
+    <!-- disable input -->
     <div class="navbar navbar-default" id="navbar">
     <div class="container" id="navbar-container">
 	<div class="navbar-header">
