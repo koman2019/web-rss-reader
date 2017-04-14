@@ -1,6 +1,16 @@
 body{
 	font-family: 'Open Sans', sans-serif;
 }
+
+.modal-content  {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important; 
+}
+div {
+	display: block;
+}
+
 a {
 color: #E1704B;
 transition: color 0.5s ease;
@@ -112,4 +122,142 @@ text-shadow: none;
 	background: #E1704B;
 	opacity: 0.7;
 	padding-bottom: 10px;
+}
+
+
+
+
+/* reading-panel */
+.content {
+	padding: 30px;
+	background: #f1f3fa;
+}
+
+/* Portlet */
+.portlet {
+	background: #fff;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.portlet.portlet-gray {
+	background: #f7f7f7;
+}
+
+.portlet.portlet-bordered {
+	border: 1px solid #eee;
+}
+
+/* Portlet Title */
+.portlet-title {
+	padding: 0;
+  	min-height: 40px;
+  	border-bottom: 1px solid #eee;
+  	margin-bottom: 18px;
+}
+
+.panel-caption {
+	float: left;
+	display: inline-block;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.panel-caption.caption-green .caption-subject,
+.panel-caption.caption-green i {
+	color: #4db3a2;
+	font-weight: 200;
+}
+
+.panel-caption.caption-red .caption-subject,
+.panel-caption.caption-red i {
+	color: #e26a6a;
+	font-weight: 200;
+}
+
+
+
+.caption i {
+	color: #777;
+	font-size: 15px;
+	font-weight: 300;
+	margin-top: 3px;
+}
+
+.panel-caption-subject {
+	color: #666;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+
+
+/* Actions */
+.actions {
+	float: right;
+  	display: inline-block;
+}
+
+.actions a {
+	margin-left: 3px;
+}
+
+.actions .btn {
+	color: #666;
+	padding: 3px 9px;
+	font-size: 13px;
+  	line-height: 1.5;
+  	background-color: #fff;
+  	border-color: #ccc;
+  	border-radius: 50px;
+}
+
+.actions .btn i {
+	font-size: 12px;
+}
+
+.actions .btn:hover {
+	background: #f2f2f2;
+}
+
+
+
+
+/* Tab */
+.portlet-title > .nav-tabs {
+	background: none;
+	margin: 0;
+	float: right;
+	display: inline-block;
+	border: 0;
+}
+
+.portlet-title > .nav-tabs > li {
+	background: none;
+	margin: 0;
+	border: 0;
+}
+
+.portlet-title > .nav-tabs > li > a {
+	background: none;
+	border: 0;
+	padding: 2px 10px 13px;
+	color: #444;
+}
+
+.portlet-title > .nav-tabs > li.active,
+.portlet-title > .nav-tabs > li.active:hover {
+  	border-bottom: 4px solid #f3565d;
+  	position: relative;
+  }
+
+  .portlet-title > .nav-tabs > li:hover {
+  	border-bottom: 4px solid #f29b9f;
+  }
+
+.portlet-title > .nav-tabs > li.active > a,
+.portlet-title > .nav-tabs > li:hover > a {
+	color: #333;
+	background: #fff;
+	border: 0;
 }

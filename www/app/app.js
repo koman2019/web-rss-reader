@@ -45,11 +45,11 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 		}
 	};
 	$scope.previewSource = function (url) {
-	$scope.isPreviewShow = true;
-	$http.get("ajax/getSourceContent.php?q=" + url).success(function(data){
-		$scope.body = data;
-		console.log(data);
-	}); 
+		$scope.isPreviewShow = true;
+		$http.get("ajax/getSourceContent.php?q=" + url).success(function(data){
+			$scope.body = data;
+			console.log(data);
+		}); 
 
 	};
 
@@ -90,6 +90,25 @@ app.controller('readingController', function($scope, $http, $sce) {
 		});
 
 	};
+	
+	$scope.renderHtml = function (htmlCode) {
+		return $sce.trustAsHtml(htmlCode);
+	};
+	
+	$scope.viewSource = function (url,index) {
+		$scope.clickedItem = index;
+		$http.get("ajax/getSourceContentInReading.php?q=" + url).success(function(data){
+			$scope.articleContents = data;
+			console.log(data);
+		}); 
+
+	};
+	
+	$scope.fullSize = function (title,date,desc) {
+		$scope.title = title;
+		$scope.date = date;
+		$scope.desc = desc;
+	}
 
 });
 

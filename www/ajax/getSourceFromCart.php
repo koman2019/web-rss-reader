@@ -6,7 +6,7 @@ if(isset($_GET['status'])){
 }
 if(isset($_GET['uid'])){
 	$userID = $_GET['uid'];
-	$query="select sourcename from users_have_sources where userid='$userID' order by sourcename";
+	$query="select sources.sourcename, sources.url from users_have_sources, sources where userid='$userID' and sources.sourcename=users_have_sources.sourcename order by sourcename";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 	$arr = array();
