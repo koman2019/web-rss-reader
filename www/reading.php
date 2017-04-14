@@ -32,6 +32,7 @@
 			<div ng-include src="'partials/reading-panel.html'"></div>
 		</div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-soundmanager2.js"></script>
 		<script type="text/javascript" src="app/app.js"></script>
 		<script
 		  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

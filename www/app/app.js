@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['angularSoundManager']);
 
 app.controller('sourcesController', function($scope, $http, $sce) {
 	
@@ -123,7 +123,25 @@ app.controller('writingController', function($scope, $http, $sce) {
 // Playing Controller
 app.controller('playingController', function($scope, $http, $sce) {
 	
-	console.log("HELLO, it is playing controller")
+	$scope.word = "";
+	$scope.song = {
+		id: 'one',
+		title: 'Tip: listen the word'
+	};
+			
+	getWord();
+	console.log("HELLO, it is playing controller");
+	function getWord(){  
+		$http.post("ajax/getWordForHangman.php").success(function(data){
+			$scope.word = data.results[0].word;
+			$scope.song.url = data.results[0].lexicalEntries[0].pronunciations[0].audioFile;
+			console.log($scope.word);
+			console.log(data.results[0]);
+			console.log(data.results[0].lexicalEntries[0].pronunciations[0].audioFile);
+			//console.log($scope.tasks[0].url)
+		});
+
+	};
 
 });
 

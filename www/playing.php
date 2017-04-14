@@ -29,9 +29,22 @@
 		</div>
 		</div>
 		<div class="row" ng-controller="playingController">
-		
+			<!-- TODO start here -->
+			<div class="container">
+
+				<sound-manager></sound-manager>
+				<div class="col-md-12">
+					<h5>Listen the word</h5>
+					<h3>{{word}}</h3>
+					<button type="button" class="btn btn-warning" music-player="play" add-song="song">{{ song.title }}</button>
+
+				</div>
+        </div>
+			</div>		
+			<!-- TODO end here cstsangac -->
 		</div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-soundmanager2.js"></script>
 		<script type="text/javascript" src="app/app.js"></script>
     </body>
 </html>

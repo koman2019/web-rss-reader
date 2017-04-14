@@ -53,6 +53,7 @@
 	<br>
 	<br>
 	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-soundmanager2.js"></script>
 	<script type="text/javascript" src="app/app.js"></script>
     </body>
 </html>
