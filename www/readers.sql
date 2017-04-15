@@ -26,7 +26,14 @@ CREATE TABLE IF NOT EXISTS `users_have_sources` (
   FOREIGN KEY (sourcename) REFERENCES sources(sourcename)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
-
+CREATE TABLE IF NOT EXISTS `yournews` (
+  `userid` int(11) NOT NULL,
+  `sourcename` varchar(200) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `pubdate` varchar(200),
+  `content` varchar(20000),
+  PRIMARY KEY (`userid`,`title`)
+) ;
 
 
 
@@ -43,12 +50,15 @@ INSERT INTO `users` (`userid`, `username`, `password`, `created_at`) VALUES
 (4, 'user4', 1, 1390818389);
 
 
-INSERT INTO `sources` (`sourcename`, `url`) VALUES
+INSERT INTO `sources` (`sourcename`, `url` , ranking) VALUES
 ('rthk local', 'http://rthk.hk/rthk/news/rss/e_expressnews_elocal.xml'),
+('Football | The Guardian', 'https://www.theguardian.com/football/rss'),
+('BBC Sport - Football', 'http://feeds.bbci.co.uk/sport/football/rss.xml?edition=int'),
 ('rthk global', 'http://rthk9.rthk.hk/rthk/news/rss/e_expressnews_einternational.xml');
 
 INSERT INTO `users_have_sources` (`userid`,`sourcename`) VALUES
 (1, 'rthk local'),
 (1, 'rthk global');
+
 
 

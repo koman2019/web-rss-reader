@@ -10,7 +10,11 @@ $articles = [];
 
 //get and output "<item>" elements
 $x=$xmlDoc->getElementsByTagName('item');
+$channel=$xmlDoc->getElementsByTagName('channel')->item(0);
 for ($i=0; $i< 6; $i++) {
+	
+  
+  $articles[$i]->sourcename = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
 
   if (!is_object($x->item($i))) break; // catch errors
   

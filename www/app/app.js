@@ -95,6 +95,26 @@ app.controller('readingController', function($scope, $http, $sce) {
 		return $sce.trustAsHtml(htmlCode);
 	};
 	
+	$scope.addNews = function(sourcename,title,date,desc) {
+		$http({
+			url: "ajax/addNews.php", 
+			method: "GET",
+			params: {
+				title: title,
+				date: date,
+				desc: desc,
+				uid: $scope.userid,
+				sourcename: sourcename
+			}
+		 }).then(function successCallback(response) {
+				console.log(response)
+		  }, function errorCallback(response) {
+			console.log("hi2")
+		  });
+		 console.log("hi")
+ 
+	}
+	
 	$scope.viewSource = function (url,index) {
 		$scope.clickedItem = index;
 		$http.get("ajax/getSourceContentInReading.php?q=" + url).success(function(data){
