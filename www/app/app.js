@@ -68,7 +68,7 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 	
 	$scope.unsubscrible = function (sourcename) {
 		if(confirm("Are you sure to delete this line?")){
-			$http.post("ajax/unsubscribeSource.php?uid="+ 1 +"&sourcename="+sourcename).success(function(data){
+			$http.post("ajax/unsubscribeSource.php?uid="+ $scope.userid +"&sourcename="+sourcename).success(function(data){
 				getSourceFromCart();
 				getSource();
 			});
