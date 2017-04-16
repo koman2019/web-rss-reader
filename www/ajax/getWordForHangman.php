@@ -1,7 +1,7 @@
 <?php
 	require_once '../includes/db.php'; // The mysql database connection script
-	
-	$query="select content from yournews where userid='1' ORDER BY RAND() LIMIT 1";
+	$uid = $_GET['uid'];
+	$query="select content from yournews where userid='$uid' ORDER BY RAND() LIMIT 1";
 	$results = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	$arr = array();
 	if($results->num_rows == 1) {

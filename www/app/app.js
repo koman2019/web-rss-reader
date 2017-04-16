@@ -152,7 +152,7 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 
 	
 	function getWord(){  
-		$http.post("ajax/getWordForHangman.php").success(function(data){
+		$http.get("ajax/getWordForHangman.php?uid=" + $scope.userid).success(function(data){
 			console.log(data);
 				
 			if(angular.isUndefined(data.results)) {
