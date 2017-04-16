@@ -141,27 +141,76 @@ app.controller('writingController', function($scope, $http, $sce) {
 });
 
 // Playing Controller
-app.controller('playingController', function($scope, $http, $sce) {
-	
-	$scope.word = "";
-	$scope.song = {
-		id: 'one',
-		title: 'Tip: listen the word'
-	};
+app.controller('playingController', function($scope, $http, $sce, $rootScope) {
+	console.log("HELLO, it is playing controller");
+	$rootScope.correctGuess = "";
+	$rootScope.word = "We are finding the diffcult word for you :)";
+	$rootScope.lose = 0;
+
 			
 	getWord();
-	console.log("HELLO, it is playing controller");
+
+	
 	function getWord(){  
 		$http.post("ajax/getWordForHangman.php").success(function(data){
-			$scope.word = data.results[0].word;
-			$scope.song.url = data.results[0].lexicalEntries[0].pronunciations[0].audioFile;
-			console.log($scope.word);
-			console.log(data.results[0]);
-			console.log(data.results[0].lexicalEntries[0].pronunciations[0].audioFile);
+			console.log(data);
+				
+			if(angular.isUndefined(data.results)) {
+				getWord();
+			} else {
+				
+				$rootScope.song = {
+					id: 'one',
+					url: ''
+				};
+				$rootScope.song.id = Math.floor((Math.random()*6)+1);
+				$rootScope.word = data.results[0].word;
+				$rootScope.song.url = data.results[0].lexicalEntries[0].pronunciations[0].audioFile;
+				console.log($rootScope.word);
+				console.log(data.results[0]);
+				console.log($rootScope.song.url);
+				console.log(data.results[0].lexicalEntries[0].pronunciations[0].audioFile);
+			}
+
 			//console.log($scope.tasks[0].url)
 		});
 
 	};
+	
+	function playHangman() {
+
+		console.log($rootScope.word);
+		$http({
+			url: "ajax/hangmanGame.php", 
+			method: "GET",
+			params: {
+				guess: "abce",
+				word: $rootScope.word,
+				lose: $rootScope.lose
+			}
+		}).then(function successCallback(response) {
+			console.log(response.data.correctGuess);
+			console.log(response.data.displayWord);
+			console.log(response.data.lose);
+			$rootScope.correctGuess = response.data.correctGuess;
+			$rootScope.displayWord = response.data.displayWord;
+			$rootScope.lose = response.data.lose
+		}, function errorCallback(response) {
+			console.log("error")
+		});
+		
+	};
+	
+	$scope.tryGuess = function () {
+		playHangman();
+	}
+	
+	$scope.restartGame = function() {
+		$rootScope.correctGuess = "";
+		$rootScope.word = "We are finding the diffcult word for you :)";
+		$rootScope.lose = 0;
+		getWord();
+	}
 
 });
 

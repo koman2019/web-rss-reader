@@ -36,8 +36,9 @@
 				<div class="col-md-12">
 					<h5>Listen the word</h5>
 					<h3>{{word}}</h3>
-					<button type="button" class="btn btn-warning" music-player="play" add-song="song">{{ song.title }}</button>
-
+					<button type="button" class="btn btn-warning" music-player="play" add-song="song">Tip: Listening the word</button>
+					<button type="button" class="btn btn-warning" ng-click="tryGuess()">Try it</button>
+					<button type="button" class="btn btn-warning" ng-click="restartGame()">Play Again</button>
 				</div>
         </div>
 			</div>		
