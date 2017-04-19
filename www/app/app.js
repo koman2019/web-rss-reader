@@ -145,6 +145,7 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 	console.log("HELLO, it is playing controller");
 	$rootScope.correctGuess = "";
 	$rootScope.word = "We are finding the diffcult word for you :)";
+	$rootScope.displayWord = "Finding the word :)";
 	$rootScope.lose = 0;
 
 			
@@ -165,11 +166,18 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 				};
 				$rootScope.song.id = Math.floor((Math.random()*6)+1);
 				$rootScope.word = data.results[0].word;
+				var display = "";
+				for (var i=0; i<$rootScope.word.length; i++) {
+					display = "_" + display;
+				}
+				$rootScope.displayWord = display;
 				$rootScope.song.url = data.results[0].lexicalEntries[0].pronunciations[0].audioFile;
 				console.log($rootScope.word);
 				console.log(data.results[0]);
 				console.log($rootScope.song.url);
 				console.log(data.results[0].lexicalEntries[0].pronunciations[0].audioFile);
+				
+
 			}
 
 			//console.log($scope.tasks[0].url)
@@ -178,13 +186,13 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 	};
 	
 	function playHangman() {
-
+		
 		console.log($rootScope.word);
 		$http({
 			url: "ajax/hangmanGame.php", 
 			method: "GET",
 			params: {
-				guess: "abce",
+				guess: $rootScope.correctGuess,
 				word: $rootScope.word,
 				lose: $rootScope.lose
 			}
@@ -195,18 +203,32 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 			$rootScope.correctGuess = response.data.correctGuess;
 			$rootScope.displayWord = response.data.displayWord;
 			$rootScope.lose = response.data.lose
+			
+			if($rootScope.correctGuess.length == $rootScope.word.length) {
+					$rootScope.lose = 100;
+			}
 		}, function errorCallback(response) {
 			console.log("error")
 		});
 		
 	};
 	
-	$scope.tryGuess = function () {
+	$scope.tryGuess = function (letter) {
+		if($rootScope.lose >= 6) {
+			return;
+		}
+		
+		if($rootScope.correctGuess.includes(letter)) {
+			return;
+		}
+		$rootScope.correctGuess = $rootScope.correctGuess + letter;
+		console.log("HELLO"+$rootScope.correctGuess);
 		playHangman();
 	}
 	
 	$scope.restartGame = function() {
 		$rootScope.correctGuess = "";
+		$rootScope.displayWord = "Finding the word :)";
 		$rootScope.word = "We are finding the diffcult word for you :)";
 		$rootScope.lose = 0;
 		getWord();

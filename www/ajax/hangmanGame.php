@@ -31,6 +31,7 @@
 	*/
   	  
 $word = $_GET['word'];
+$word = strtolower($word);
 $guess = $_GET['guess'];
 $lose = $_GET['lose'];;
 
@@ -45,7 +46,7 @@ $guess_chars = str_split($guess);
 $displayWord_chars = $word_chars;      
 for( $i = 0 ; $i < count($displayWord_chars); $i++){
   //use '---' instead, not easy to see '___'
-  $displayWord_chars[$i] = '-';
+  $displayWord_chars[$i] = '_';
 }
 //print_r($displayWord_chars);
 $correctGuess = "";
