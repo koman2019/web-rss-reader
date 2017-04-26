@@ -3,7 +3,7 @@
 ?>
 <style>
 .a-z a {
-	font-size: 50px;
+	font-size: 40px;
 }
 .correct {
 	color: blue;
@@ -11,31 +11,31 @@
 </style>
 <html ng-app="myApp">
     <head>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/taskman.css"/>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/taskman.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=News+Cycle:400,700">
+		<link rel="stylesheet" href="fonts/font-awesome.min.css">
+
 
     </head>
     <body>
 	
-		<!-- disable input -->
-		<div class="navbar navbar-default" id="navbar">
-		<div class="container" id="navbar-container">
-		<div class="navbar-header">
-			<a href="#" class="navbar-brand">
-				<small>
-					<i class="glyphicon glyphicon glyphicon-log-out"></i>
-					Learn-Around
-				</small>
-			</a><!-- /.brand -->
-			<input type="text" ng-model="userid" ng-init="userid=<?php echo $login_userid ;?>" ng-show="false">	
-		</div><!-- /.navbar-header -->
-		<div class="navbar-header pull-right" role="navigation">
-			<a href="main.php" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Main board</a>
-			<a href="logout.php" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>&nbsp;logout</a>
-		</div>	
-		</div>
-		</div>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Read-Around</a></div>
+				<div class="collapse navbar-collapse" id="navcol-1">
+					<ul class="nav navbar-nav">
+						<li role="presentation"><a href="main.php">Main board</a></li>
+						<!-- disable input -->
+						<input type="text" ng-model="userid" ng-init="userid=<?php echo $login_userid ;?>" ng-show="false">	
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li role="presentation"><a href="logout.php">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="content">
 		<div class="row" ng-controller="playingController">
 			<!-- TODO start here -->
 			<div class="container">
@@ -72,8 +72,8 @@
 							<a ng-click="tryGuess('j')" ng-class="{'correct' : correctGuess.includes('j')}"  href="">J</a>
 							<a ng-click="tryGuess('k')" ng-class="{'correct' : correctGuess.includes('k')}"  href="">K</a>
 							<a ng-click="tryGuess('l')" ng-class="{'correct' : correctGuess.includes('l')}"  href="">L</a>
-							<a ng-click="tryGuess('n')" ng-class="{'correct' : correctGuess.includes('m')}"  href="">N</a>
-							<a ng-click="tryGuess('m')" ng-class="{'correct' : correctGuess.includes('n')}"  href="">M</a>
+							<a ng-click="tryGuess('m')" ng-class="{'correct' : correctGuess.includes('m')}"  href="">M</a>
+							<a ng-click="tryGuess('n')" ng-class="{'correct' : correctGuess.includes('n')}"  href="">N</a>
 							<a ng-click="tryGuess('o')" ng-class="{'correct' : correctGuess.includes('o')}"  href="">O</a>
 							<a ng-click="tryGuess('p')" ng-class="{'correct' : correctGuess.includes('p')}"  href="">P</a>
 							<a ng-click="tryGuess('q')" ng-class="{'correct' : correctGuess.includes('q')}"  href="">Q</a>
@@ -93,6 +93,7 @@
         </div>
 			</div>		
 			<!-- TODO end here cstsangac -->
+		</div>
 		</div>
 		<br>
 		<br>

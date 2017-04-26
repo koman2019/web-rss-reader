@@ -203,8 +203,10 @@ app.controller('playingController', function($scope, $http, $sce, $rootScope) {
 			$rootScope.correctGuess = response.data.correctGuess;
 			$rootScope.displayWord = response.data.displayWord;
 			$rootScope.lose = response.data.lose
-			
-			if($rootScope.correctGuess.length == $rootScope.word.length) {
+			if($rootScope.lose >= 6) {
+				$rootScope.displayWord = $rootScope.word;
+			}
+			else if($rootScope.displayWord == $rootScope.word) {
 					$rootScope.lose = 100;
 			}
 		}, function errorCallback(response) {
