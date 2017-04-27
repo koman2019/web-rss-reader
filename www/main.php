@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="css/taskman.css"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=News+Cycle:400,700">
     <link rel="stylesheet" href="fonts/font-awesome.min.css">
-
+	<title>Read Around </title>
 
     </head>
     <body>
 	<nav class="navbar navbar-default">
         <div class="container">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Read-Around</a></div>
+            <div class="navbar-header"><a class="navbar-brand navbar-link"  href="index.html">Read-Around</a></div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li role="presentation"><a href="" ng-click="learning = false; choosePage = true;">Find Source</a></li>
@@ -63,6 +63,7 @@
             </div>
         </div>
     </footer>
+
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular-soundmanager2.js"></script>
 	<script type="text/javascript" src="app/app.js"></script>

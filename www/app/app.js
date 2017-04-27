@@ -80,6 +80,7 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 
 // Reading Controller
 app.controller('readingController', function($scope, $http, $sce) {
+	$scope.clickedItem = 0;
 	getSourceFromCart();
 	console.log("HELLO, it is reading controller")
 	function getSourceFromCart(){  

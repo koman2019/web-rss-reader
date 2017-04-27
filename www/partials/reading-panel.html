@@ -13,7 +13,7 @@
 						</div>
 						<ul class="nav nav-tabs" ng-repeat="source in sourcesFromCart">
 							<!-- repeat the source -->
-							<li ng-if="$index == 0" data-ng-class="{'active' : clickedItem == $index}">
+							<li ng-if="$index == 0" ng-init="viewSource(source.url,$index)" data-ng-class="{'active' : clickedItem == $index}">
 								<a ng-click="viewSource(source.url,$index)">
 								{{source.sourcename}} </a>
 							</li>

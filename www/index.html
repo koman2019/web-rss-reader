@@ -1,321 +1,76 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="teamform-index-app">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="keywords" content="teamform, team">
-      <!-- The meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	  
-      <!-- libraries and CSS 	  
-		JQuery: Necessary for some bootstrap interactions (v1.12.4 is used)		
-		Bootstrap: Library and CSS for bootstrap framework (v3.3.7 is used)
-		Font-awesome: More icons for the web development (v4.6.3 is used)		
-		site.css: A customized css for our web application. Not from any web framework. 
-	  -->
-	        
-      <script src="lib/jquery.min.js"></script>      
-      <script src="lib/bootstrap.min.js"></script> 	  
-      	  
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">   
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">   
-      <link rel="stylesheet" href="css/index.css">
-      <link rel="stylesheet" href="css/site.css">
-      <link rel="icon" href="img/ITDog_logo.png">
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Around </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
 
+<body>
+    <div class="jumbotron hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-push-7 phone-preview">
+            </div>
+            <div class="col-md-6 col-md-pull-3 get-it">
+                <h1>Read Around</h1>
+                <p>Read-Around is you English master. Start practising today with our easy to use learning playform, with your favourite news feeds.</strong> </p>
 
-	  	  
-   </head>
+                <p><a class="btn btn-primary btn-lg" role="button" href="main.php">Click Here to Learn</a></p>
 
-   <!-- Design: JSSOR full-width slider-->
-   <script src="js/jssor.slider-21.1.6.mini.js" type="text/javascript"></script>
-   <script type="text/javascript">
-	   jQuery(document).ready(function ($) {
-		   var jssor_1_SlideoTransitions = [
-			   [{b: -1, d: 1, o: -1}, {b: 0, d: 1000, o: 1}],
-			   [{b: 1900, d: 2000, x: -379, e: {x: 7}}],
-			   [{b: 1900, d: 2000, x: -379, e: {x: 7}}],
-			   [{b: -1, d: 1, o: -1, r: 288, sX: 9, sY: 9}, {
-				   b: 1000,
-				   d: 900,
-				   x: -1400,
-				   y: -660,
-				   o: 1,
-				   r: -288,
-				   sX: -9,
-				   sY: -9,
-				   e: {r: 6}
-			   }, {b: 1900, d: 1600, x: -200, o: -1, e: {x: 16}}]
-		   ];
+            </div>
+        </div>
+    </div>
+</div>
+    <section class="testimonials">
+        <h2 class="text-center">We Love It !</h2>
+        <blockquote>
+            <p><strong>Beef up everyday.</strong> </p>
+            <footer>Read Around Developers</footer>
+        </blockquote>
+    </section>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Fantastic Features</h2>
+                    <p>We are trying to make some features catering for all learners' needs.</p>
+					<p>After all, We both are students.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-eye-open"></i>
+							<br>
+                            <p>Read news</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-pencil"></i>
+							<br>
+                            <p>Write your feedback</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-plane"></i>
+							<br>
+                            <p>Play Games</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Read Around © 2017</h5></div>
+            </div>
+        </div>
+    </footer>
+    <script src="lib/jquery.min.js"></script>      
+    <script src="lib/bootstrap.min.js"></script> 	
+</body>
 
-		   var jssor_1_options = {
-			   $AutoPlay: true,
-			   $SlideDuration: 800,
-			   $SlideEasing: $Jease$.$OutQuint,
-			   $CaptionSliderOptions: {
-				   $Class: $JssorCaptionSlideo$,
-				   $Transitions: jssor_1_SlideoTransitions
-			   },
-			   $ArrowNavigatorOptions: {
-				   $Class: $JssorArrowNavigator$
-			   },
-			   $BulletNavigatorOptions: {
-				   $Class: $JssorBulletNavigator$
-			   }
-		   };
-
-		   var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-		   /*responsive code begin*/
-		   function ScaleSlider() {
-			   var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-			   if (refSize) {
-				   refSize = Math.min(refSize, 1920);
-				   jssor_1_slider.$ScaleWidth(refSize);
-			   }
-			   else {
-				   window.setTimeout(ScaleSlider, 30);
-			   }
-		   }
-
-		   ScaleSlider();
-		   $(window).bind("load", ScaleSlider);
-		   $(window).bind("resize", ScaleSlider);
-		   $(window).bind("orientationchange", ScaleSlider);
-		   /*responsive code end*/
-	   });
-   </script>
-   <style>
-	   /* bullet navigator skin*/
-	   /*
-       .jssorb05 div           (normal)
-       .jssorb05 div:hover     (normal mouseover)
-       .jssorb05 .av           (active)
-       .jssorb05 .av:hover     (active mouseover)
-       .jssorb05 .dn           (mousedown)
-       */
-	   .jssorb05 {
-		   position: absolute;
-	   }
-
-	   .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
-		   position: absolute;
-		   /* size of bullet elment */
-		   width: 16px;
-		   height: 16px;
-		   background: url('img/b05.png') no-repeat;
-		   overflow: hidden;
-		   cursor: pointer;
-	   }
-
-	   .jssorb05 div {
-		   background-position: -7px -7px;
-	   }
-
-	   .jssorb05 div:hover, .jssorb05 .av:hover {
-		   background-position: -37px -7px;
-	   }
-
-	   .jssorb05 .av {
-		   background-position: -67px -7px;
-	   }
-
-	   .jssorb05 .dn, .jssorb05 .dn:hover {
-		   background-position: -97px -7px;
-	   }
-
-
-
-	   .jssora22l {
-		   background-position: -10px -31px;
-	   }
-
-	   .jssora22r {
-		   background-position: -70px -31px;
-	   }
-
-	   .jssora22l:hover {
-		   background-position: -130px -31px;
-	   }
-
-	   .jssora22r:hover {
-		   background-position: -190px -31px;
-	   }
-
-	   .jssora22l.jssora22ldn {
-		   background-position: -250px -31px;
-	   }
-
-	   .jssora22r.jssora22rdn {
-		   background-position: -310px -31px;
-	   }
-
-	   .jssora22l.jssora22lds {
-		   background-position: -10px -31px;
-		   opacity: .3;
-		   pointer-events: none;
-	   }
-
-	   .jssora22r.jssora22rds {
-		   background-position: -70px -31px;
-		   opacity: .3;
-		   pointer-events: none;
-	   }
-   </style>
-   <body>
-   <div id="jssor_1"
-		style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 400px; overflow: hidden; visibility: hidden;">
-	   <div id="bktop"></div>
-
-	   <div data-u="slides"
-			style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 400px; overflow: hidden;">
-		   <a data-u="any" href="http://www.jssor.com" style="display:none">Full Width Slider</a>
-
-		   <div class="pic" data-p="225.00" data-po="80% 55%" style="display: none;">
-			   <img data-u="image" src="img/hkust.jpg"/>
-			   <div style="position: absolute; top: 125px; left: 390px; width: 750px; height: 120px; font-size: 36px; color: #ffffff; line-height: 60px;">
-				   "Beef up everyday."
-			   </div>
-		   </div>
-		   <div class="pic" data-p="225.00" data-po="80% 55%" style="display: none;">
-			   <img data-u="image" src="img/learn-english-news.jpg"/>
-		   </div>
-	   </div>
-	   <!-- Bullet Navigator -->
-	   <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
-		   <!-- bullet navigator item prototype -->
-		   <div data-u="prototype" style="width:16px;height:16px;"></div>
-	   </div>
-	   <!-- Arrow Navigator -->
-	   <span data-u="arrowleft" class="jssora22l" style="top:0px;left:8px;width:40px;height:58px;"
-			 data-autocenter="2"></span>
-	   <span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;"
-			 data-autocenter="2"></span>
-   </div>
-   <!-- #endregion Jssor Slider End -->
-
-   <hr>
-
-
-   <div class="container marketing">
-	   <!-- Role Section -->
-	   <div class="row featurette" id="page_about">
-		   <br><br><br>
-		   <div class=" text-center col-md-12">
-			   <p style="font-size:large" class="text-muted"><b>learn-Around is you English master. Start practising today with our easy to use learning playform, with your favourite news feeds.
-				   </b> </h4>
-			   </p>
-			   <br>
-		   </div>
-		   <br>
-		   <br>
-		   <div class="col-md-12">
-			   <div class="row">
-
-
-				   <div class="col-md-4 col-md-offset-4">
-					   <div class="roundcard rolecard">
-						   <img src="img/member.png">
-						   <a href="main.php">
-							<h4 align="center"><b>Click here To Learn !</b></h4>
-						   </a>
-						   <hr>
-						   <ul class="text-left" style="padding-bottom:10px;">
-							   <li>&#10004; Read updated news every minute</li>
-							   <li>&#10004; Set your learning goals</li>
-						   </ul>
-					   </div>
-				   </div>
-
-			   </div>
-		   </div>
-	   </div>
-	   <!-- End of Role-->
-
-	   <hr class="featurette-divider">
-
-
-	   <div class="row featurette" id="page_team">
-		   <br>
-		   <br>
-		   <br>
-		   <h3 class="featurette-heading" align="center"><b>- Developer -</b></h3>
-
-			   <div class="panel panel-default">
-
-				   <div id="collapse1" class="panel-collapse collapse-in">
-					   <div class="panel-body">
-						   <div class="col-md-12">
-							   <div class="row">
-								   <div class="col-md-2">
-									   <img src="img/no_profile_img.png" width="150" height="150">
-								   </div>
-								   <div class="col-md-10">
-									   <p><h6 style="display:inline">Email:</h6>&#32; <a
-										   href="mailto:kycheungat@ust.hk"><span style="font-size:120%">@ust.hk</span></a></p>
-									   <p><h6>Development role:</p>
-									   <ul style="padding-left:30px;">
-										   <li>&bull;Our Backend Developer</li>
-										   <li>&bull;Maintain team database regularly</li>
-										   <li></li>
-									   </ul>
-								   </div>
-							   </div>
-						   </div>
-					   </div>
-				   </div>
-			   </div>
-			   
-			   <div class="panel panel-default">
-				   <div id="collapse2" class="panel-collapse collapse-in">
-					   <div class="panel-body">
-						   <div class="col-md-12">
-							   <div class="row">
-								   <div class="col-md-2">
-									   <img src="img/david_profile.PNG" width="150" height="150"
-											style="border-radius:20px">
-								   </div>
-								   <div class="col-md-10">
-									   <p><h6 style="display:inline">Email:</h6>&#32; <a href="mailto:kmko@ust.hk"><span
-										   style="font-size:120%">kmko@ust.hk</span></a></p>
-									   <p><h6>Development role:</p>
-									   <ul style="padding-left:30px">
-										   <li>&bull;Our Fontend Developer</li>
-										   <li>&bull;UI Designer</li>
-										   <li></li>
-									   </ul>
-								   </div>
-							   </div>
-						   </div>
-					   </div>
-				   </div>
-			   </div>
-
-
-
-
-	   </div>
-	   <hr class="featurette-divider">
-	   <!--End of Development Team-->
-
-
-
-
-	   <!-- /END THE FEATURETTES -->
-   </div>
-   <!-- /.container -->
-
-
-   </body>
 </html>
-
-
-<!--
-
-How it works
-Step 1: Find RSS link for the new
-
-
--->
