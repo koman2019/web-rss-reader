@@ -313,7 +313,7 @@ nav.navbar.navbar-default {
   color:#fff;
   text-align:center;
   background-color:#798FA5;
-  height:32px;
+  height:25px;
   opacity:0.8;
   line-height:32px;
 }
@@ -401,5 +401,49 @@ nav.navbar.navbar-default {
   padding:7px;
   font-size:12px;
   min-width:25px;
+}
+
+/*Writing panel*/
+
+.post-body {
+  margin-top:30px;
+  font-size:16px;
+}
+
+@media (min-width:992px) {
+  .post-title {
+    text-align:right;
+    padding-right:30px;
+  }
+}
+
+.post-title .author {
+  text-transform:uppercase;
+}
+
+.post-body figure {
+  margin-bottom:10px;
+  text-align:center;
+}
+
+.post-title .author span {
+  margin-left:5px;
+}
+
+.post-title h1 {
+  font-weight:bold;
+  margin-top:30px;
+}
+
+@media (max-width:767px) {
+  .post-title h1 {
+    margin-top:20px;
+    font-size:32px;
+    margin-bottom:10px;
+  }
+}
+
+div.container.post {
+  margin-bottom:50px;
 }
 

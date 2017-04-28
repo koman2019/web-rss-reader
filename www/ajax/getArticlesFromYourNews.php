@@ -4,7 +4,7 @@ require_once '../includes/db.php'; // The mysql database connection script
 
 if(isset($_GET['uid'])){
 	$userID = $_GET['uid'];
-	$query="select pubdate, title, feedback from yournews where userid='$userID'";
+	$query="select sourcename, pubdate, title, content, feedback from yournews where userid='$userID'";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 	$arr = array();

@@ -175,17 +175,52 @@ app.controller('readingController', function($scope, $http, $sce) {
 app.controller('writingController', function($scope, $http, $sce) {
 
 	console.log("HELLO, it is writing controller!");
+	$scope.isTextOpen = false;
 	$scope.clickedItem = 1;
 	getArticlesFromYourNews();
 	getNumOfFeedback();
-	
+	var simplemde = new SimpleMDE({
+		autoDownloadFontAwesome: undefined,
+		forceSync: true,
+		spellChecker: true,
+		initialValue: "Please leave any comments you like!",
+		element: document.getElementById("editor")
+	});
+	simplemde.toTextArea();
+	simplemde = null;
+	document.getElementById("editor").style.display = "none";
+
+	//simplemde.value('123');
 	$scope.switchTab = function() {
 		if ($scope.clickedItem == 1) {
 			$scope.clickedItem = 2;
 		} else {
 			$scope.clickedItem = 1;
 		}
+	};
+	
+	//ng-click="showArticle(yournew.title,yournew.pubdate.substring(5, 12),yournew.content)"
+	$scope.showArticle = function(sourcename,title,date,content) {
+		if (simplemde) {
+			simplemde.toTextArea();
+			simplemde = null;
+		}
+
+		simplemde = new SimpleMDE({
+			autoDownloadFontAwesome: undefined,
+			forceSync: true,
+			spellChecker: true,
+			initialValue: "Please leave any comments you like!",
+			element: document.getElementById("editor")
+		});
+		$scope.isTextOpen = true;
+		$scope.title = title;
+		$scope.date = date;
+		$scope.content = content;
+		$scope.sourcename = sourcename;
+		simplemde.value($scope.sourcename);
 	}
+	
 	function getArticlesFromYourNews(){  
 		$http.get("ajax/getArticlesFromYourNews.php?uid="+ $scope.userid).success(function(data){
 			$scope.yournews = data;
@@ -202,6 +237,10 @@ app.controller('writingController', function($scope, $http, $sce) {
 			//console.log($scope.tasks[0].url)
 		});
 
+	};
+	
+	$scope.renderHtml = function (htmlCode) {
+		return $sce.trustAsHtml(htmlCode);
 	};
 
 });
