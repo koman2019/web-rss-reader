@@ -200,7 +200,7 @@ app.controller('writingController', function($scope, $http, $sce) {
 	};
 	
 	//ng-click="showArticle(yournew.title,yournew.pubdate.substring(5, 12),yournew.content)"
-	$scope.showArticle = function(sourcename,title,date,content) {
+	$scope.showArticle = function(sourcename,title,date,content,feedback) {
 		if (simplemde) {
 			simplemde.toTextArea();
 			simplemde = null;
@@ -218,7 +218,7 @@ app.controller('writingController', function($scope, $http, $sce) {
 		$scope.date = date;
 		$scope.content = content;
 		$scope.sourcename = sourcename;
-		simplemde.value($scope.sourcename);
+		simplemde.value(feedback);
 	}
 	
 	function getArticlesFromYourNews(){  
@@ -229,6 +229,12 @@ app.controller('writingController', function($scope, $http, $sce) {
 		});
 
 	};
+	
+	$scope.saveFeedback = function() {
+		$http.get("ajax/saveFeedback.php?uid="+ $scope.userid + "&sourcename=" + $scope.sourcename + "&feedback=" + simplemde.value() + "&title=" + $scope.title).success(function(data){
+			getArticlesFromYourNews();
+		});		
+	}
 	
 	function getNumOfFeedback(){  
 		$http.get("ajax/getNumOfFeedback.php?uid="+ $scope.userid).success(function(data){

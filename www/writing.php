@@ -61,7 +61,7 @@
 											<span class="time" ng-bind="yournew.pubdate.substring(5, 12)"></span>
 											<span class="title" ng-bind="yournew.title"></span>
 											<span class="icon"> 
-												<a href="" ng-click="showArticle(yournew.sourcename, yournew.title,yournew.pubdate.substring(5, 12),yournew.content)" class="flag">
+												<a href="" ng-click="showArticle(yournew.sourcename, yournew.title,yournew.pubdate.substring(5, 12),yournew.content,yournew.feedback)" class="flag">
 													<i class="glyphicon glyphicon-pencil"></i>
 												</a>
 											</span>
@@ -70,7 +70,7 @@
 											<span class="time" ng-bind="yournew.pubdate.substring(5, 12)"></span>
 											<span class="title" ng-bind="yournew.title"></span>
 											<span class="icon"> 
-												<a href="" ng-click="showArticle(yournew.sourcename,yournew.title,yournew.pubdate.substring(5, 12),yournew.content)" class="flag">
+												<a href="" ng-click="showArticle(yournew.sourcename,yournew.title,yournew.pubdate.substring(5, 12),yournew.content,yournew.feedback)" class="flag">
 													<i class="glyphicon glyphicon-pencil"></i>
 												</a>
 											</span>
@@ -99,6 +99,7 @@
 						</div ng-show="false">
 							<textarea style="display:none" id="editor"></textarea>
 						</div>
+						<button type="button" ng-if="isTextOpen" class="btn btn-primary pull-right" ng-click="saveFeedback()">Save It</button>
 					</div>
 				</div>
 
