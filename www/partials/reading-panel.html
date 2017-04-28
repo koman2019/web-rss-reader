@@ -13,17 +13,27 @@
 						</div>
 						<ul class="nav nav-tabs" ng-repeat="source in sourcesFromCart">
 							<!-- repeat the source -->
-							<li ng-if="$index == 0" ng-init="viewSource(source.url,$index)" data-ng-class="{'active' : clickedItem == $index}">
-								<a ng-click="viewSource(source.url,$index)">
+							<li ng-if="$index == 0" ng-init="viewSource(source.url,$index,source.sourcename)" data-ng-class="{'active' : clickedItem == $index}">
+								<a ng-click="viewSource(source.url,$index,source.sourcename)">
 								{{source.sourcename}} </a>
 							</li>
 							<li ng-if="$index != 0" data-ng-class="{'active' : clickedItem == $index}">
-								<a ng-click="viewSource(source.url,$index)">
+								<a ng-click="viewSource(source.url,$index,source.sourcename)">
 								{{source.sourcename}} </a>
 							</li>
 						</ul>
 					</div>
 					<div class="row">
+					<div ng-if="getLevel[0].count == 0" style="padding-left: 25px;">Difficulty Levels: 
+						<span class="badge"><a style="color:white" href="" ng-click="setLevel(1,selectedSourceName)">1</a></span>
+						<span class="badge"><a style="color:white" href="" ng-click="setLevel(2,selectedSourceName)">2</a></span>
+						<span class="badge"><a style="color:white" href="" ng-click="setLevel(3,selectedSourceName)">3</a></span>
+						<span class="badge"><a style="color:white" href="" ng-click="setLevel(4,selectedSourceName)">4</a></span>
+						<span class="badge"><a style="color:white" href="" ng-click="setLevel(5,selectedSourceName)">5</a></span>
+					</div>
+					<div ng-if="getLevel[0].count == 1" style="padding-left: 25px;">
+						Thank you for Evaluating News Difficulty. 
+					</div>
 					<div class="portlet-body" ng-repeat="articleContent in articleContents">
 						
 						<div class="clearfix" ng-if="$index % 2 == 0"></div>

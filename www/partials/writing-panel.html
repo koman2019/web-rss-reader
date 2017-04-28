@@ -1,35 +1,51 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12" style="margin:1px;">
-			<form>
-				<div class="form-group">
-					<div class="input-group"></div>
-				</div>
-			</form>
+
 
 			<div>
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Your news <span class="badge">42</span></a></li>
-					<li><a href="#tab-2" role="tab" data-toggle="tab" style="color:rgb(21,6,6);">Your news <span class="badge">42</span></a></li>
-					<li>
-						<a href="#tab-3" role="tab" data-toggle="tab"> </a>
+					<li data-ng-class="{'active' : clickedItem == 1}" style="margin-bottom: -10px;">
+						<a ng-click="switchTab()"><h4>Without Feedback <span class="badge">{{numOfFeedback[0].count}}</span><h4> </a>
 					</li>
-					<li>
-						<a href="#tab-4" role="tab" data-toggle="tab"> </a>
+					<li data-ng-class="{'active' : clickedItem == 2}" style="margin-bottom: -10px;">
+						<a ng-click="switchTab()"><h4>With Feedback<h4></a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active" role="tabpanel" id="tab-1">
+					<div class="tab-pane active" role="tabpanel">
 						<div class="thread-list-head">
 							<nav class="thread-pages">
 								<ul class="pagination"></ul>
 							</nav>
 						</div>
 						<ul class="thread-list">
-							<li class="thread"><span class="time">Apr 21</span><span class="title">Hello</span><span class="icon"> <a href="javascript:void(0)" class="subscribe"><i class="glyphicon glyphicon-star-empty"></i></a><a href="javascript:void(0)" class="flag"><i class="glyphicon glyphicon-flag"></i></a></span></li>
-							<li
-							class="thread"><span class="time">Apr 20</span><span class="title">Hello</span><span class="icon"> <a href="javascript:void(0)" class="subscribe"><i class="glyphicon glyphicon-star-empty"></i></a><a href="javascript:void(0)" class="flag"><i class="glyphicon glyphicon-flag"></i></a></span></li>
-
+							<div ng-repeat="yournew in yournews" >
+							<li class="thread" ng-if="yournew.feedback == '' && clickedItem == 1">
+								<span class="time">{{yournew.pubdate.substring(5, 12)}}</span>
+								<span class="title">{{yournew.title}}</span>
+								<span class="icon"> 
+									<a href="javascript:void(0)" class="subscribe">
+										<i class="glyphicon glyphicon-star-empty"></i>
+									</a>
+									<a href="javascript:void(0)" class="flag">
+										<i class="glyphicon glyphicon-pencil"></i>
+									</a>
+								</span>
+							</li>
+							<li class="thread" ng-if="yournew.feedback != '' && clickedItem == 2">
+								<span class="time">{{yournew.pubdate.substring(5, 12)}}</span>
+								<span class="title">{{yournew.title}}</span>
+								<span class="icon"> 
+									<a href="javascript:void(0)" class="subscribe">
+										<i class="glyphicon glyphicon-star-empty"></i>
+									</a>
+									<a href="javascript:void(0)" class="flag">
+										<i class="glyphicon glyphicon-pencil"></i>
+									</a>
+								</span>
+							</li>
+							</div>
 						</ul>
 					</div>
 					<div class="tab-pane" role="tabpanel" id="tab-2">
@@ -42,9 +58,6 @@
 						</div>
 						<ul class="thread-list">
 							<li class="thread"><span class="time">Apr 21</span><span class="title">Bye</span><span class="icon"> <a href="javascript:void(0)" class="subscribe"><i class="glyphicon glyphicon-star-empty"></i></a><a href="javascript:void(0)" class="flag"><i class="glyphicon glyphicon-flag"></i></a></span></li>
-							<li
-							class="thread"><span class="time">Apr 20</span><span class="title">Bye</span><span class="icon"> <a href="javascript:void(0)" class="subscribe"><i class="glyphicon glyphicon-star-empty"></i></a><a href="javascript:void(0)" class="flag"><i class="glyphicon glyphicon-flag"></i></a></span></li>
-
 						</ul>
 
 					

@@ -1,22 +1,40 @@
 //Define an angular module for our app
 var app = angular.module('myApp', ['angularSoundManager']);
 
-app.controller('sourcesController', function($scope, $http, $sce) {
+app.controller('sourcesController', function($scope, $http, $sce, $rootScope) {
 	
 	getSource(); // Load all available tasks
 	getSourceFromCart();
-	
+	$rootScope.grade;
 	// show the learning page after login
 	$scope.userid;
 	console.log($scope.userid);
 	function getSource(){  
 		$http.post("ajax/getSource.php?uid=" + $scope.userid).success(function(data){
-			$scope.sources = data;
-			console.log($scope.sources)
-			//console.log($scope.tasks[0].url)
+			$rootScope.sources = data;
+			console.log($rootScope.sources)
+			
+
+			$http.get("ajax/getAverageLevel.php").success(function(data2){
+				console.log(data2);
+				$rootScope.grade = data2;
+			});
+				
+
+
 		});
 
 	};
+	
+	$scope.getGradeBy = function (sourcename) {
+		var i;
+		console.log($rootScope.grade.length)
+		for (i=0 ; i < $rootScope.grade.length ; i++) {
+			if ($rootScope.grade[i].sourcename == sourcename) {
+				return $rootScope.grade[i].grade;
+			}
+		}
+	}
 	
 	function getSourceFromCart(){  
 		$http.post("ajax/getSourceFromCart.php?uid="+ $scope.userid).success(function(data){
@@ -38,7 +56,7 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 		$scope.addNewClicked = false;
 	};
 	$scope.deleteTask = function (sourcename) {
-	if(confirm("Are you sure to delete this line?")){
+	if(confirm("Are you sure to unsubscrible this source?")){
 		$http.post("ajax/unsubscribeSource.php?uid="+ $scope.userid + "&sourcename=" + sourcename).success(function(data){
 			getSource();
 		  });
@@ -56,15 +74,17 @@ app.controller('sourcesController', function($scope, $http, $sce) {
 	$scope.subscrible = function(sourcename) {
 	   $http.post("ajax/subscribeSource.php?uid="+ $scope.userid +"&sourcename="+sourcename).success(function(data){
 	     getSource();
-			$http.post("ajax/getSourceFromCart.php?uid=" + $scope.userid).success(function(data){
+			$http.get("ajax/getSourceFromCart.php?uid=" + $scope.userid).success(function(data){
 			$scope.sourcesFromCart = data;
 			console.log($scope.sourcesFromCart)
-			//console.log($scope.tasks[0].url)
 			});
+
 			
 	   });
 	   
 	};
+	
+
 	
 	$scope.unsubscrible = function (sourcename) {
 		if(confirm("Are you sure to delete this line?")){
@@ -116,11 +136,16 @@ app.controller('readingController', function($scope, $http, $sce) {
  
 	}
 	
-	$scope.viewSource = function (url,index) {
+	$scope.viewSource = function (url,index, sourceName) {
+		$scope.selectedSourceName = sourceName;
 		$scope.clickedItem = index;
 		$http.get("ajax/getSourceContentInReading.php?q=" + url).success(function(data){
 			$scope.articleContents = data;
 			console.log(data);
+		}); 
+		$http.get("ajax/getLevel.php?uid=" + $scope.userid + "&sourceName=" + sourceName).success(function(data){
+			$scope.getLevel = data;
+			console.log($scope.getLevel[0].count);
 		}); 
 
 	};
@@ -130,14 +155,54 @@ app.controller('readingController', function($scope, $http, $sce) {
 		$scope.date = date;
 		$scope.desc = desc;
 	}
+	
+	$scope.setLevel = function(level,sourceName) {
+		console.log(level + " " + sourceName);
+		$http.get("ajax/setLevel.php?level=" + level + "&sourceName=" + sourceName + "&uid="+ $scope.userid).success(function(data){
+
+			$http.get("ajax/getLevel.php?uid=" + $scope.userid + "&sourceName=" + sourceName).success(function(data2){
+				$scope.getLevel = data2;
+				console.log($scope.getLevel[0].count);
+			});
+		}); 
+		
+
+	}
 
 });
 
 // Writing Controller
 app.controller('writingController', function($scope, $http, $sce) {
 
-	console.log("HELLO, it is writing controller");
+	console.log("HELLO, it is writing controller!");
+	$scope.clickedItem = 1;
+	getArticlesFromYourNews();
+	getNumOfFeedback();
+	
+	$scope.switchTab = function() {
+		if ($scope.clickedItem == 1) {
+			$scope.clickedItem = 2;
+		} else {
+			$scope.clickedItem = 1;
+		}
+	}
+	function getArticlesFromYourNews(){  
+		$http.get("ajax/getArticlesFromYourNews.php?uid="+ $scope.userid).success(function(data){
+			$scope.yournews = data;
+			console.log($scope.yournews)
+			//console.log($scope.tasks[0].url)
+		});
 
+	};
+	
+	function getNumOfFeedback(){  
+		$http.get("ajax/getNumOfFeedback.php?uid="+ $scope.userid).success(function(data){
+			$scope.numOfFeedback = data;
+			console.log($scope.numOfFeedback)
+			//console.log($scope.tasks[0].url)
+		});
+
+	};
 
 });
 

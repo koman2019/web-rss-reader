@@ -12,6 +12,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
+CREATE TABLE IF NOT EXISTS `grades` (
+  `sourcename` varchar(200) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `grade` int(4) NOT NULL,
+  PRIMARY KEY (`sourcename`,`userid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
 CREATE TABLE IF NOT EXISTS `sources` (
   `sourcename` varchar(200) NOT NULL,
   `url` varchar(200) NOT NULL,
@@ -32,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `yournews` (
   `title` varchar(200) NOT NULL,
   `pubdate` varchar(200),
   `content` varchar(20000),
+  `feedback` varchar(20000),
   PRIMARY KEY (`userid`,`title`)
 ) ;
 

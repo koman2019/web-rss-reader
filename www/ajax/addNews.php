@@ -16,7 +16,7 @@ if(isset($_GET['title']) & isset($_GET['desc'])){
 	$content = $mysqli->real_escape_string($content);
 	$date = $mysqli->real_escape_string($date);
 
-	$query="insert into yournews (userid , sourcename, title , pubdate,content) values ('$userID' ,'$sourcename','$title' ,'$date','$content')";
+	$query="insert into yournews (userid , sourcename, title , pubdate,content,feedback) values ('$userID' ,'$sourcename','$title' ,'$date','$content','')";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 	$result = $mysqli->affected_rows;
