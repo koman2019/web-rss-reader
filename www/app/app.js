@@ -102,6 +102,7 @@ app.controller('sourcesController', function($scope, $http, $sce, $rootScope) {
 app.controller('readingController', function($scope, $http, $sce) {
 	$scope.clickedItem = 0;
 	getSourceFromCart();
+    $scope.addMessage = [false,false,false,false,false,false];
 	console.log("HELLO, it is reading controller")
 	function getSourceFromCart(){  
 		$http.post("ajax/getSourceFromCart.php?uid="+ $scope.userid).success(function(data){
@@ -116,7 +117,7 @@ app.controller('readingController', function($scope, $http, $sce) {
 		return $sce.trustAsHtml(htmlCode);
 	};
 	
-	$scope.addNews = function(sourcename,title,date,desc) {
+	$scope.addNews = function(sourcename,title,date,desc,index) {
 		$http({
 			url: "ajax/addNews.php", 
 			method: "GET",
@@ -128,7 +129,8 @@ app.controller('readingController', function($scope, $http, $sce) {
 				sourcename: sourcename
 			}
 		 }).then(function successCallback(response) {
-				console.log(response)
+				console.log(response);
+				$scope.addMessage[index] = true;
 		  }, function errorCallback(response) {
 			console.log("hi2")
 		  });
@@ -176,6 +178,7 @@ app.controller('writingController', function($scope, $http, $sce) {
 
 	console.log("HELLO, it is writing controller!");
 	$scope.isTextOpen = false;
+	$scope.isShowArticle = false;
 	$scope.clickedItem = 1;
 	getArticlesFromYourNews();
 	getNumOfFeedback();
@@ -192,6 +195,7 @@ app.controller('writingController', function($scope, $http, $sce) {
 
 	//simplemde.value('123');
 	$scope.switchTab = function() {
+		$scope.isShowArticle = false;
 		if ($scope.clickedItem == 1) {
 			$scope.clickedItem = 2;
 		} else {
@@ -201,6 +205,7 @@ app.controller('writingController', function($scope, $http, $sce) {
 	
 	//ng-click="showArticle(yournew.title,yournew.pubdate.substring(5, 12),yournew.content)"
 	$scope.showArticle = function(sourcename,title,date,content,feedback) {
+		$scope.isShowArticle = true;
 		if (simplemde) {
 			simplemde.toTextArea();
 			simplemde = null;

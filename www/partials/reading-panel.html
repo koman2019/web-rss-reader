@@ -47,9 +47,10 @@
 										<div class="portlet-title">
 											<div class="panel-caption">
 												<span class="caption-subject text-uppercase"> {{$index+1}}</span>
+												<span ng-show="addMessage[$index]" style="color:blue; margin-left: 30px;"> OK, The news has been saved.</span>
 											</div>
 											<div class="actions">
-												<a href=""  ng-click="addNews(articleContent.sourcename,articleContent.title,articleContent.pubDate,articleContent.desc)" class="btn">
+												<a href=""  ng-click="addNews(articleContent.sourcename,articleContent.title,articleContent.pubDate,articleContent.desc,$index)" class="btn">
 													<i class="glyphicon glyphicon-paperclip"></i>
 													Add
 												</a>

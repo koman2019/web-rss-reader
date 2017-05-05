@@ -81,7 +81,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="container post">
+					<div ng-show="isShowArticle" class="container post">
 						<div class="row">
 							<div class="col-md-6 post-title">
 								<h3 ng-bind="title"></h3>
@@ -96,7 +96,7 @@
 							
 							</div>
 						</div>
-						</div ng-show="false">
+						<div>
 							<textarea style="display:none" id="editor"></textarea>
 						</div>
 						<button type="button" ng-if="isTextOpen" class="btn btn-primary pull-right" ng-click="saveFeedback()">Save It</button>
